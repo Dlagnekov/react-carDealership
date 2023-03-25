@@ -1,0 +1,75 @@
+.card {
+  width: 290px;
+  margin: 10px;
+  max-height: auto;
+}
+
+.car__img {
+  border-bottom: 1px solid grey;
+  height: 200px;
+}
+
+.card__heading {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.title {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 0;
+  padding-top: 4px;
+}
+
+.carInfo__list {
+  font-weight: bold;
+}
+
+.carInfo_list_price {
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 0px;
+}
+
+.description {
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.links {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+.links:hover {
+  color: white;
+}
+
+.details__btn {
+  background-color: coral;
+  border: none;
+}
+
+.details__btn:hover {
+  background-color: #373f81;
+  text-decoration: underline;
+}
+
+.edit__btn,
+.delete__btn {
+  background-color: #373f81;
+  border: none;
+}
+
+.edit__btn:hover,
+.delete__btn:hover {
+  background-color: coral;
+  text-decoration: underline;
+}

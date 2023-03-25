@@ -1,0 +1,81 @@
+.background-container {
+  margin: 60px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.card {
+    width: 350px;
+    margin: 10px;
+    max-height: auto;
+  }
+  
+  .car__img{
+    border-bottom: 1px solid grey;
+    height: 200px;
+  }
+  
+  .title {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 0;
+    padding-top: 4px;
+  }
+  
+  .carInfo__list {
+    font-weight: bold;
+  }
+  
+  .carInfo_list_price {
+    font-weight: 600;
+    font-size: 24px;
+    padding-left: 0px;
+  }
+  
+  .description {
+    font-weight: bold;
+  }
+  
+  .buttons{
+      display: flex;
+      justify-content: space-around;
+  }
+  
+  .links{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;   
+  }
+
+  .links:hover{
+    color: white;
+  }
+  
+  .back__btn{
+    background-color: #265326;
+    border: none;
+  }
+
+  .back__btn:hover{
+    background-color: #265326;
+    text-decoration: underline;
+  }
+
+  .book__btn{
+    background-color: goldenrod;
+    border: none;
+  }
+
+  .book__btn:hover{
+    background-color: goldenrod;
+    text-decoration: underline;
+  }
+  
+  
+  
+  

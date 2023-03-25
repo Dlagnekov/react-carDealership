@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+
+.title_link{
+  text-decoration: none;
+
+}
+
+.title {
+  text-align: center;
+  text-decoration: none;
+	color:  #5383d3;
+  font-weight: bolder;
+  font-size: 54px;
+  font-family: "Niconne";
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.navigation {
+  width: 85%;
+}
+
+.nav-link {
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+}
