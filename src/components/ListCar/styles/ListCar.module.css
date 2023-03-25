@@ -1,0 +1,17 @@
+.title{
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.form {
+    background-color: lightgray;
+    opacity: 0.9;
+    width: 900px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    color: black;
+    border: 2px lightgray;
+    border-radius: 8px ;
+    
+}

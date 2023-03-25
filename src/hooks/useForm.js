@@ -13,10 +13,10 @@ export const useForm = (initialValues, onSubmitHandler) => {
         onSubmitHandler(values);
     };
 
-    const changeValues = (newValues) => {
+    const changeValues = (oldValues) => {
         // TODO: Validate newValues shape (like initialValues)
         
-        setValues(newValues);
+        setValues(oldValues);
     };
 
     return {

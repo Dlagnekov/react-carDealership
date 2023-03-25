@@ -18,6 +18,7 @@ import { Logout } from './components/Logout/Logout';
 import { ListCar } from './components/ListCar/ListCar';
 import { Catalog } from './components/Catalog/Catalog';
 import { CarDetails } from './components/CarDetails/CarDetails';
+import { EditCar } from './components/EditCar/EditCar';
 import { About } from './components/About/About';
 import { Contacts } from './components/Contacts/Contacts';
 import { Error } from './components/Error/Error';
@@ -75,19 +76,33 @@ function App() {
 
   const onLoginSubmit = async (data) => {
     try {
-        const result = await authService.login(data);
+      const result = await authService.login(data);
 
-        setAuth(result);
-        navigate('/catalog');
+      setAuth(result);
+      navigate('/catalog');
     } catch (error) {
-        console.log('There is a problem');
+      console.log('There is a problem');
     }
-};
+  };
 
-const onLogout = async () => {
-  await authService.logout();
-  setAuth({});
-};
+  const onLogout = async () => {
+    await authService.logout();
+    setAuth({});
+  };
+
+  const onCarEditSubmit = async (values) => {
+    const result = await carService.edit(values._id, values);
+
+    setCars(state => state.map(x => x._id === values._id ? result : x))
+
+    navigate(`/catalog/${values._id}`);
+  }
+
+  const onDeleteHandler = async (carId) => {
+    await carService.delete(carId);
+    setCars(state => state.filter(x => x._id !== carId));
+    navigate('/catalog');
+  };
 
   const authContextValues = {
     onLoginSubmit,
@@ -99,12 +114,6 @@ const onLogout = async () => {
     isAuthenticated: !!auth.accessToken,
   };
 
-  const onDeleteHandler = async (carId) => {
-    await carService.delete(carId);
-    setCars(state => state.filter(x => x._id !== carId));
-    navigate('/catalog');
-  };
-
   const carContextValues = {
     onDeleteHandler,
   }
@@ -112,34 +121,35 @@ const onLogout = async () => {
   return (
 
     <AuthContext.Provider value={authContextValues}>
-    <CarContext.Provider value={carContextValues}>
+      <CarContext.Provider value={carContextValues}>
 
-      <div className="App" styles={{ minHeight: 2000 }}>
+        <div className="App" styles={{ minHeight: 2000 }}>
 
-        <Header />
+          <Header />
 
-        <main id="main-content">
-          <Routes>
+          <main id="main-content">
+            <Routes>
 
-            <Route path='/' element={<Catalog cars={cars} />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/logout' element={<Logout />} />
-            <Route path='/list-car' element={<ListCar onListCarSubmit={onListCarSubmit} />} />
-            <Route path='/catalog' element={<Catalog cars={cars} />} />
-            <Route path='/catalog/:carId/details' element={<CarDetails />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contacts' element={<Contacts />} />
-            <Route path='/error' element={<Error />} />
+              <Route path='/' element={<Catalog cars={cars} />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/logout' element={<Logout />} />
+              <Route path='/list-car' element={<ListCar onListCarSubmit={onListCarSubmit} />} />
+              <Route path='/catalog' element={<Catalog cars={cars} />} />
+              <Route path='/catalog/:carId/details' element={<CarDetails />} />
+              <Route path='/catalog/:carId/edit' element={<EditCar onCarEditSubmit={onCarEditSubmit} />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/contacts' element={<Contacts />} />
+              <Route path='/error' element={<Error />} />
 
 
-          </Routes>
-        </main>
+            </Routes>
+          </main>
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
 
-    </CarContext.Provider>
+      </CarContext.Provider>
     </AuthContext.Provider>
 
   );

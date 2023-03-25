@@ -1,3 +1,8 @@
+.title{
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
 .form {
     background-color: lightgray;
     opacity: 0.9;
@@ -8,5 +13,4 @@
     color: black;
     border: 2px lightgray;
     border-radius: 8px ;
-    
 }

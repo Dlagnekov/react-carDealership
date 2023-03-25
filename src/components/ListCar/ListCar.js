@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import styles from './styles/createForm.module.css';
+import styles from './styles/ListCar.module.css';
 
 import { useContext } from 'react';
 
@@ -33,6 +33,7 @@ export const ListCar = ({
     return (
 
         <Form className={styles.form} onSubmit={onSubmit}>
+            <h2 className={styles.title}>List a car</h2>
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor='manufacturer'>Manufacturer</Form.Label>
                 <Form.Control type="text" placeholder="Enter manufacturer" name="manufacturer" value={values.manufacturer} onChange={changeHandler} />

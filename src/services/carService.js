@@ -21,8 +21,6 @@ export const carServiceFactory = (token) => {
     const create = async (carData) => {
         const result = await request.post(baseUrl, carData);
     
-        console.log(result);
-    
         return result;
     };
 
