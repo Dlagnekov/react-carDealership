@@ -6,8 +6,6 @@ export const Catalog = ({
     cars,
 }) => {
 
-    console.log('catalog');
-
     return (
         <div className={styles["card-list"]}>
 

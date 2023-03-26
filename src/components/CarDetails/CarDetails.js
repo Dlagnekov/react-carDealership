@@ -14,7 +14,7 @@ import { carServiceFactory } from '../../services/carService';
 
 export const CarDetails = () => {
 
-    const { token } = useContext(AuthContext);
+    const { token, isAuthenticated } = useContext(AuthContext);
 
     const { carId } = useParams();
 
@@ -53,7 +53,9 @@ export const CarDetails = () => {
                     <Card.Text className={styles.description}>{car.description}</Card.Text>
                     <div className={styles.buttons}>
                         <Button className={styles.back__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Back to catalog</Link></Button>
-                        <Button className={styles.book__btn} variant="primary"><Link to={`/catalog/${car._id}/book`} className={styles.links}>Book test drive</Link></Button>
+                        {isAuthenticated && (
+                            <Button className={styles.book__btn} variant="primary"><Link to={`/catalog/${car._id}/book`} className={styles.links}>Book test drive</Link></Button>
+                        )}
                     </div>
 
                 </Card.Body>
