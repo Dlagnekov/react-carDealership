@@ -79,6 +79,7 @@ function App() {
       const result = await authService.login(data);
 
       setAuth(result);
+      
       navigate('/catalog');
     } catch (error) {
       console.log('There is a problem');

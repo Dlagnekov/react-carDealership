@@ -99,7 +99,7 @@ export const Register = () => {
                     Close
                 </Button>
                 <Button variant="primary" onClick={onFormSubmit}>
-                    Save Changes
+                    Register
                 </Button>
             </Modal.Footer>
         </Modal>

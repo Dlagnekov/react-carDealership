@@ -48,7 +48,7 @@ export const Login = () => {
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
                             type="email"
@@ -59,7 +59,7 @@ export const Login = () => {
                             onChange={changeHandler}
                         />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             type="password"
@@ -76,7 +76,7 @@ export const Login = () => {
                     Close
                 </Button>
                 <Button variant="primary" onClick={onFormSubmit}>
-                    Save Changes
+                    Login
                 </Button>
             </Modal.Footer>
         </Modal>
