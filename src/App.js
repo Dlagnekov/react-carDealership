@@ -31,12 +31,13 @@ function App() {
 
   const [cars, setCars] = useState([]);
   const [auth, setAuth] = useState({});
+  const [user, setUser] = useState(false);
 
   const carService = carServiceFactory(auth.accessToken);
   const authService = authServiceFactory(auth.accessToken);
 
-
   useEffect(() => {
+
     carService.getAll()
       .then(result => {
         setCars(result);
@@ -67,7 +68,6 @@ function App() {
       const result = await authService.register(registerData);
 
       setAuth(result);
-
       navigate('/catalog');
     } catch (error) {
       console.log('There is a problem');
@@ -79,7 +79,9 @@ function App() {
       const result = await authService.login(data);
 
       setAuth(result);
-      
+      localStorage.setItem(result.email, result.accessToken);
+      setUser(true);
+
       navigate('/catalog');
     } catch (error) {
       console.log('There is a problem');
@@ -89,6 +91,8 @@ function App() {
   const onLogout = async () => {
     await authService.logout();
     setAuth({});
+    setUser(false);
+    localStorage.clear();
   };
 
   const onCarEditSubmit = async (values) => {
@@ -113,10 +117,13 @@ function App() {
     token: auth.accessToken,
     userEmail: auth.email,
     isAuthenticated: !!auth.accessToken,
+    isLogged: user,
   };
 
   const carContextValues = {
+
     onDeleteHandler,
+    
   }
 
   return (
