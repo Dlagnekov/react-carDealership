@@ -127,8 +127,6 @@ function App() {
     
   }
 
-  console.log('test');
-
   return (
 
     <AuthContext.Provider value={authContextValues}>
