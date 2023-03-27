@@ -12,7 +12,7 @@ export const Header = () => {
     e.target.className = "Header_nav-link__Pk1Nv nav-link active";
   }
 
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isLogged } = useContext(AuthContext);
 
   return (
 
@@ -26,7 +26,7 @@ export const Header = () => {
         <Nav.Item>
           <Nav.Link as={Link} to="/catalog" className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-1">Catalog</Nav.Link>
         </Nav.Item>
-        {!isAuthenticated && (
+        {!isLogged && (
           <>
             <Nav.Item>
               <Nav.Link as={Link} to="/register" className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-2">Sign up</Nav.Link>
@@ -36,7 +36,7 @@ export const Header = () => {
             </Nav.Item>
           </>
         )}
-        {isAuthenticated && (
+        {isLogged && (
           <>
             <Nav.Item>
               <Nav.Link as={Link} to="/logout" className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-4">Logout</Nav.Link>
