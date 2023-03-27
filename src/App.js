@@ -56,6 +56,7 @@ function App() {
     }
 
     navigate('/catalog');
+
   };
 
   const onRegisterSubmit = async (values) => {
@@ -125,6 +126,8 @@ function App() {
     onDeleteHandler,
     
   }
+
+  console.log('test');
 
   return (
 
