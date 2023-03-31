@@ -13,11 +13,11 @@ import { carServiceFactory } from '../../services/carService';
 
 export const CarDetails = () => {
 
-    const { token, isAuthenticated } = useAuthContext();
+    const { user } = useAuthContext();
 
     const { carId } = useParams();
 
-    const carService = carServiceFactory(token);
+    const carService = carServiceFactory();
 
     const [car, setCar] = useState({});
 
@@ -27,8 +27,8 @@ export const CarDetails = () => {
             .then(result => {
                 setCar(result);
             })
-
-    }, [carService, carId]);
+            // eslint-disable-next-line
+    }, []);
 
 
     return (
@@ -52,7 +52,7 @@ export const CarDetails = () => {
                     <Card.Text className={styles.description}>{car.description}</Card.Text>
                     <div className={styles.buttons}>
                         <Button className={styles.back__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Back to catalog</Link></Button>
-                        {isAuthenticated && (
+                        {user && car._ownerId !== user._id && (
                             <Button className={styles.book__btn} variant="primary"><Link to={`/catalog/${car._id}/book`} className={styles.links}>Book test drive</Link></Button>
                         )}
                     </div>

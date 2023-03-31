@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { authServiceFactory } from '../services/authService';
@@ -9,12 +9,11 @@ export const AuthProvider = ({
     children,
 }) => {
 
-    const [auth, setAuth] = useState({});
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(undefined);
 
     const navigate = useNavigate();
 
-    const authService = authServiceFactory(auth.accessToken);
+    const authService = authServiceFactory(user?.accessToken);
 
     const onRegisterSubmit = async (values) => {
         const { confirmPassword, ...registerData } = values;
@@ -25,7 +24,8 @@ export const AuthProvider = ({
         try {
             const result = await authService.register(registerData);
 
-            setAuth(result);
+            setUser(result);
+            localStorage.setItem('user', JSON.stringify(result));
             navigate('/catalog');
         } catch (error) {
             console.log('There is a problem');
@@ -34,12 +34,9 @@ export const AuthProvider = ({
 
     const onLoginSubmit = async (data) => {
         try {
-
             const result = await authService.login(data);
-            setAuth(result);
-            localStorage.setItem('auth', result.accessToken);
-            setUser(localStorage.getItem('auth'));
-
+            localStorage.setItem('user', JSON.stringify(result));
+            setUser(result);
             navigate('/catalog');
         } catch (error) {
             console.log('There is a problem');
@@ -48,20 +45,25 @@ export const AuthProvider = ({
 
     const onLogout = async () => {
         await authService.logout();
-        setAuth({});
-        setUser('');
+        setUser(undefined);
         localStorage.clear();
     };
+
+    useEffect(()=> {
+        const userAsString = localStorage.getItem('user');
+        if (userAsString) {
+            const userData = JSON.parse(userAsString);
+            setUser(userData)
+        }
+    }, []);
 
     const contextValues = {
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
-        userId: auth._id,
-        token: auth.accessToken,
-        userEmail: auth.email,
-        isAuthenticated: !!auth.accessToken,
-        isLogged: user,
+        userId: user?._id,
+        user: user,
+        userEmail: user?.email,
     };
 
     return (

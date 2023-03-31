@@ -15,9 +15,10 @@ export const CarCard = ({
     imageUrl,
     description,
     _id,
+    _ownerId,
 }) => {
 
-    const { isAuthenticated } = useAuthContext();
+    const { user } = useAuthContext();
 
     return (
 
@@ -34,7 +35,7 @@ export const CarCard = ({
 
                 </ListGroup>
                 <Card.Text className={styles.description}>{description}</Card.Text>
-                {isAuthenticated && (
+                {user && user._id === _ownerId && (
                     <div className={styles.buttons}>
                         <Button className={styles.edit__btn} variant="primary"><Link to={`/catalog/${_id}/edit`} className={styles.links}>Edit</Link></Button>
                         <Button className={styles.delete__btn} variant="primary"><Link to={`/catalog/${_id}/delete`} className={styles.links}>Delete</Link></Button>

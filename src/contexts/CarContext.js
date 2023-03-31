@@ -14,17 +14,19 @@ export const CarProvider = ({
 
     const [cars, setCars] = useState([]);
 
-    const { token } = useAuthContext();
+    const { user } = useAuthContext();
 
-    const carService = carServiceFactory(token);
+    const carService = carServiceFactory(user?.accessToken);
 
     useEffect(() => {
 
         carService.getAll()
             .then(result => {
-                setCars(result);
+                if(result){
+                    setCars(result);
+                } 
             })
-
+            // eslint-disable-next-line
     }, []);
 
     const onListCarSubmit = async (data) => {
