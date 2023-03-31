@@ -3,23 +3,25 @@ import Form from 'react-bootstrap/Form';
 
 import styles from './styles/EditCar.module.css';
 
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useCarContext } from '../../contexts/CarContext';
+
 import { useForm } from '../../hooks/useForm';
 
 import { carServiceFactory } from '../../services/carService';
 
 
-export const EditCar = ({
-    onCarEditSubmit,
-}
-) => {
-
-    const { carId } = useParams();
+export const EditCar = () => {
 
     const carService = carServiceFactory();
+
+    const { carId } = useParams();
+    const { userId } = useAuthContext();
+    const { onCarEditSubmit } = useCarContext();
+
 
     useEffect(() =>{
         carService.getOne(carId)
@@ -28,7 +30,6 @@ export const EditCar = ({
         })
     }, [carId]);
     
-    const { userId } = useContext(AuthContext);
 
 
     const { values, changeHandler, onSubmit, changeValues } = useForm({

@@ -2,14 +2,19 @@ import { CarCard } from '../CarCard/CarCard';
 
 import styles from './styles/Catalog.module.css';
 
-export const Catalog = ({
-    cars,
-}) => {
+import { useCarContext } from '../../contexts/CarContext';
+
+export const Catalog = () => {
+
+    const { cars } = useCarContext();
+
+    console.log(cars);
 
     return (
         <div className={styles["card-list"]}>
-
-            {cars.map(car => <CarCard key={car._id} {...car} />)}
+            
+            {cars && (cars.map(car => <CarCard key={car._id} {...car} />))}
+            {!cars && (<h1>No cars</h1>)}
 
         </div>
     );

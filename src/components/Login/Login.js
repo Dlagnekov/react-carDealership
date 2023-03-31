@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from "react";
 
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
 import Button from 'react-bootstrap/Button';
@@ -15,7 +14,8 @@ export const Login = () => {
 
     const [show, setShow] = useState(false);
 
-    const { onLoginSubmit } = useContext(AuthContext);
+    const { onLoginSubmit } = useAuthContext();
+
     const { values, changeHandler, onSubmit } = useForm({
         email: '',
         password: '',
