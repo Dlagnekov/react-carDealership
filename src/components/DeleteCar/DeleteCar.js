@@ -18,10 +18,10 @@ export const DeleteCar = () => {
 
     const { carId } = useParams();
 
-    const { token } = useAuthContext();
+    const { user } = useAuthContext();
     const { onDeleteHandler } = useCarContext();
 
-    const carService = carServiceFactory(token);
+    const carService = carServiceFactory(user.accessToken);
 
     const [car, setCar] = useState({});
 
@@ -31,8 +31,8 @@ export const DeleteCar = () => {
             .then(result => {
                 setCar(result);
             })
-
-    }, [carId]);
+            // eslint-disable-next-line
+    }, []);
 
     return (
         <div
