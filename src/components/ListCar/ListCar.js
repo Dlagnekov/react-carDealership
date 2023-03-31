@@ -3,19 +3,17 @@ import Form from 'react-bootstrap/Form';
 
 import styles from './styles/ListCar.module.css';
 
-import { useContext } from 'react';
+import { useCarContext } from '../../contexts/CarContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
-import { AuthContext } from '../../contexts/AuthContext';
 import { useForm } from '../../hooks/useForm';
 
 
-export const ListCar = ({
-    onListCarSubmit,
-}
-) => {
+export const ListCar = () => {
 
-    const { userId } = useContext(AuthContext);
 
+    const { userId } = useAuthContext();
+    const { onListCarSubmit } = useCarContext();
 
     const { values, changeHandler, onSubmit } = useForm({
         manufacturer: '',

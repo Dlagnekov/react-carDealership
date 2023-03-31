@@ -1,9 +1,7 @@
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
 
-import { useContext } from 'react';
-
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 import styles from './styles/Header.module.css';
 
@@ -12,7 +10,9 @@ export const Header = () => {
     e.target.className = "Header_nav-link__Pk1Nv nav-link active";
   }
 
-  const { isLogged } = useContext(AuthContext);
+  const { isLogged } = useAuthContext();
+
+  console.log(isLogged);
 
   return (
 
