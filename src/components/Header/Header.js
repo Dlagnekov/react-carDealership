@@ -12,8 +12,6 @@ export const Header = () => {
 
   const { isLogged } = useAuthContext();
 
-  console.log(isLogged);
-
   return (
 
     <header>

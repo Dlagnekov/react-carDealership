@@ -5,10 +5,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import styles from './styles/Car.module.css';
 
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 
-import { AuthContext } from '../../contexts/AuthContext';
-import { CarContext } from '../../contexts/CarContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export const CarCard = ({
     manufacturer,
@@ -19,9 +17,7 @@ export const CarCard = ({
     _id,
 }) => {
 
-    const { isAuthenticated } = useContext(AuthContext);
-    const { onDeleteHandler } = useContext(CarContext);
-
+    const { isAuthenticated } = useAuthContext();
 
     return (
 
@@ -41,7 +37,7 @@ export const CarCard = ({
                 {isAuthenticated && (
                     <div className={styles.buttons}>
                         <Button className={styles.edit__btn} variant="primary"><Link to={`/catalog/${_id}/edit`} className={styles.links}>Edit</Link></Button>
-                        <Button className={styles.delete__btn} variant="primary"><Link to={`/catalog/${_id}/delete`} className={styles.links} onClick={() => onDeleteHandler(_id)}>Delete</Link></Button>
+                        <Button className={styles.delete__btn} variant="primary"><Link to={`/catalog/${_id}/delete`} className={styles.links}>Delete</Link></Button>
                     </div>
                 )}
                 {/* {!isAuthenticated && (

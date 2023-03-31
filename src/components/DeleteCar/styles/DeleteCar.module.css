@@ -1,0 +1,26 @@
+.modal{
+    margin-top: 100px;
+}
+
+.modal__title{
+    font-weight: bolder;
+    text-align: center;
+    font-size: 28px;
+
+}
+
+.car__title {
+    padding-top: 8px;
+    font-size: 32px;
+    font-style: italic;
+    text-align: center;
+}
+
+.confirm__btn{
+    background-color: #373f81;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
