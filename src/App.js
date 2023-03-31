@@ -13,6 +13,7 @@ import { ListCar } from './components/ListCar/ListCar';
 import { Catalog } from './components/Catalog/Catalog';
 import { CarDetails } from './components/CarDetails/CarDetails';
 import { EditCar } from './components/EditCar/EditCar';
+import { DeleteCar } from './components/DeleteCar/DeleteCar';
 import { About } from './components/About/About';
 import { Contacts } from './components/Contacts/Contacts';
 import { Error } from './components/Error/Error';
@@ -41,6 +42,7 @@ function App() {
               <Route path='/catalog' element={<Catalog />} />
               <Route path='/catalog/:carId/details' element={<CarDetails />} />
               <Route path='/catalog/:carId/edit' element={<EditCar />} />
+              <Route path='/catalog/:carId/delete' element={<DeleteCar />} />
               <Route path='/about' element={<About />} />
               <Route path='/contacts' element={<Contacts />} />
               <Route path='/error' element={<Error />} />

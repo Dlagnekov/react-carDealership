@@ -50,6 +50,7 @@
 
 .links:hover {
   color: white;
+  text-decoration: underline;
 }
 
 .details__btn {
@@ -71,5 +72,4 @@
 .edit__btn:hover,
 .delete__btn:hover {
   background-color: coral;
-  text-decoration: underline;
 }

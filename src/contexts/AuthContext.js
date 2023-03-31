@@ -34,9 +34,8 @@ export const AuthProvider = ({
 
     const onLoginSubmit = async (data) => {
         try {
-            console.log('hey');
+
             const result = await authService.login(data);
-            console.log('hi');
             setAuth(result);
             localStorage.setItem('auth', result.accessToken);
             setUser(localStorage.getItem('auth'));

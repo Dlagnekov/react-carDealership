@@ -5,16 +5,15 @@ import styles from './styles/CarDetails.module.css';
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useContext } from "react";
 import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 import { carServiceFactory } from '../../services/carService';
 
 export const CarDetails = () => {
 
-    const { token, isAuthenticated } = useContext(AuthContext);
+    const { token, isAuthenticated } = useAuthContext();
 
     const { carId } = useParams();
 
