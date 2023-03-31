@@ -7,7 +7,7 @@ import { useCarContext } from '../../contexts/CarContext';
 export const Catalog = () => {
 
     const { cars } = useCarContext();
-    
+    console.log('yes')
     return (
         <div className={styles["card-list"]}>
             
