@@ -4,7 +4,6 @@ import { useContext } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
@@ -16,12 +15,18 @@ export const Logout = () => {
 
     useEffect(() => {
         setModalShow(true);
-        onLogout();
-        navigate('/');
-        let activeNav = document.querySelector('.active');
-        if (activeNav) {
-            activeNav.className = "Header_nav-link__Pk1Nv nav-link";
-        }
+        setTimeout(() => {
+
+            let activeNav = document.querySelector('.active');
+            if (activeNav) {
+                activeNav.className = "Header_nav-link__Pk1Nv nav-link";
+            }
+            setModalShow(false);
+
+            navigate('/');
+            onLogout();
+
+        }, 2000);
         // eslint-disable-next-line
     }, []);
 
@@ -31,7 +36,6 @@ export const Logout = () => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
             show={modalShow}
-            // onHide={onGoodbye}
         >
             <Modal.Header >
                 <Modal.Title id="contained-modal-title-vcenter" style={{ margin: "auto" }}>
@@ -40,9 +44,6 @@ export const Logout = () => {
                 </Modal.Title>
             </Modal.Header>
 
-            <Modal.Footer>
-                <Button  style={{ margin: "auto" }}>Goodbye</Button>
-            </Modal.Footer>
         </Modal >
     );
 
