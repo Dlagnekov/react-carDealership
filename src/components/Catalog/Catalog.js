@@ -17,7 +17,7 @@ export const Catalog = () => {
             setListed(true);
         }
         // eslint-disable-next-line
-    }, []);
+    }, [cars]);
 
     return (
         <div className={styles["card-list"]}>
