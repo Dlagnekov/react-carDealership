@@ -21,12 +21,8 @@ export const CarProvider = ({
     useEffect(() => {
 
         carService.getAll()
-            .then(result => {
-                if(result){
-                    setCars(result);
-                } 
-            })
-            // eslint-disable-next-line
+            .then(result => setCars(result));
+        // eslint-disable-next-line
     }, []);
 
     const onListCarSubmit = async (data) => {

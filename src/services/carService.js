@@ -6,21 +6,29 @@ export const carServiceFactory = (token) => {
     const request = requestFactory(token);
 
     const getAll = async () => {
+
         const result = await request.get(baseUrl);
-        const cars = Object.values(result);
-    
-        return cars;
+
+        if (result) {
+
+            const cars = Object.values(result);
+            return cars;
+
+        }
+
+        return result;
+
     };
-    
+
     const getOne = async (carId) => {
         const result = await request.get(`${baseUrl}/${carId}`);
-    
+
         return result;
     };
-    
+
     const create = async (carData) => {
         const result = await request.post(baseUrl, carData);
-    
+
         return result;
     };
 

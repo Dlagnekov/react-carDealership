@@ -12,24 +12,18 @@ export const Logout = () => {
     const navigate = useNavigate();
 
     const [modalShow, setModalShow] = useState(false);
+    const { onLogout } = useContext(AuthContext);
 
     useEffect(() => {
         setModalShow(true);
         onLogout();
-            // eslint-disable-next-line
-    }, []);
-
-    const { onLogout } = useContext(AuthContext);
-
-    const onGoodbye = () => {
-        setModalShow(false);
         navigate('/');
         let activeNav = document.querySelector('.active');
         if (activeNav) {
             activeNav.className = "Header_nav-link__Pk1Nv nav-link";
         }
-    }
-
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <Modal
@@ -37,7 +31,7 @@ export const Logout = () => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
             show={modalShow}
-            onHide={onGoodbye}
+            // onHide={onGoodbye}
         >
             <Modal.Header >
                 <Modal.Title id="contained-modal-title-vcenter" style={{ margin: "auto" }}>
@@ -47,7 +41,7 @@ export const Logout = () => {
             </Modal.Header>
 
             <Modal.Footer>
-                <Button onClick={onGoodbye} style={{ margin: "auto" }}>Goodbye</Button>
+                <Button  style={{ margin: "auto" }}>Goodbye</Button>
             </Modal.Footer>
         </Modal >
     );
