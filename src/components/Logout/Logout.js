@@ -15,12 +15,13 @@ export const Logout = () => {
 
     useEffect(() => {
         setModalShow(true);
+        onLogout();
+            // eslint-disable-next-line
     }, []);
 
     const { onLogout } = useContext(AuthContext);
 
-    const onLogoutSubmit = () => {
-        onLogout();
+    const onGoodbye = () => {
         setModalShow(false);
         navigate('/');
         let activeNav = document.querySelector('.active');
@@ -36,7 +37,7 @@ export const Logout = () => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
             show={modalShow}
-            onHide={onLogoutSubmit}
+            onHide={onGoodbye}
         >
             <Modal.Header >
                 <Modal.Title id="contained-modal-title-vcenter" style={{ margin: "auto" }}>
@@ -46,7 +47,7 @@ export const Logout = () => {
             </Modal.Header>
 
             <Modal.Footer>
-                <Button onClick={onLogoutSubmit} style={{ margin: "auto" }}>Goodbye</Button>
+                <Button onClick={onGoodbye} style={{ margin: "auto" }}>Goodbye</Button>
             </Modal.Footer>
         </Modal >
     );
