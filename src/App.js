@@ -19,6 +19,7 @@ import { Contacts } from './components/Contacts/Contacts';
 import { Error } from './components/Error/Error';
 import { Footer } from './components/Footer/Footer';
 
+import { RouteGuard } from './common/RouteGuard';
 
 function App() {
 
@@ -35,14 +36,20 @@ function App() {
             <Routes>
 
               <Route path='/' element={<Catalog />} />
+              <Route path='/catalog' element={<Catalog />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
-              <Route path='/logout' element={<Logout />} />
-              <Route path='/list-car' element={<ListCar />} />
-              <Route path='/catalog' element={<Catalog />} />
               <Route path='/catalog/:carId/details' element={<CarDetails />} />
-              <Route path='/catalog/:carId/edit' element={<EditCar />} />
-              <Route path='/catalog/:carId/delete' element={<DeleteCar />} />
+
+              <Route element={<RouteGuard />}>
+
+                <Route path='/logout' element={<Logout />} />
+                <Route path='/list-car' element={<ListCar />} />
+                <Route path='/catalog/:carId/edit' element={<EditCar />} />
+                <Route path='/catalog/:carId/delete' element={<DeleteCar />} />
+
+              </ Route>
+
               <Route path='/about' element={<About />} />
               <Route path='/contacts' element={<Contacts />} />
               <Route path='/error' element={<Error />} />
