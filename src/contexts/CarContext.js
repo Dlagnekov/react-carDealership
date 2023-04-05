@@ -31,12 +31,9 @@ export const CarProvider = ({
         setCars(state => [...state, newCar]);
 
         let activeNav = document.querySelector('.active');
-        let catalogNav = document.querySelector('a[href="/catalog"]');
-        console.log(activeNav);
-        console.log(catalogNav);
+        
         if (activeNav) {
             activeNav.className = "Header_nav-link__QO5jJ nav-link";
-            catalogNav.className = "Header_nav-link__QO5jJ nav-link active";
         }
         
         navigate('/catalog');
