@@ -1,15 +1,19 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { useAuthContext } from "../contexts/AuthContext";
-
 export const RouteGuard = ({
     children,
 }) => {
-    const { user } = useAuthContext();
 
-    if (!user) {
+    let loggedUser = false;
+
+    if (localStorage.getItem('user')) {
+        loggedUser = true;
+    }
+
+    if (!loggedUser) {
         return <Navigate to='/login' />
     }
 
     return children ? children : <Outlet />
+
 };
