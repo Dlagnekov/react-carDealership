@@ -18,6 +18,11 @@ export const Register = () => {
         confirmPassword: '',
     }, onRegisterSubmit);
 
+    const style = {
+        color: 'red',
+        display: 'none'
+    }
+
     return (
 
         <div className={styles.register}>
@@ -32,6 +37,9 @@ export const Register = () => {
                         value={values.username}
                         onChange={changeHandler}
                     />
+                    <p id='usernameForm' style={style}>
+                        The username should be between 2 and 10 characters!
+                    </p>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -43,6 +51,9 @@ export const Register = () => {
                         value={values.email}
                         onChange={changeHandler}
                     />
+                    <p id='emailForm' style={style}>
+                        The email should be in an email format!
+                    </p>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -54,6 +65,9 @@ export const Register = () => {
                         value={values.password}
                         onChange={changeHandler}
                     />
+                    <p id='passwordForm' style={style}>
+                        The password should be between 5 and 10 characters!
+                    </p>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -65,7 +79,15 @@ export const Register = () => {
                         value={values.confirmPassword}
                         onChange={changeHandler}
                     />
+                    <p id='repeatPasswordForm' style={style}>
+                        Password doesn't match!
+                    </p>
                 </Form.Group>
+
+                <p id='errorForm' style={style}>
+                    All fields are required!
+                </p>
+
                 <Button variant="primary" onClick={onSubmit}>
                     Register
                 </Button>

@@ -2,9 +2,54 @@ export default function validation(values) {
 
     console.log(values);
 
+    if (values.username) {
+        if (values.username.length < 2 || values.username.length > 10) {
+            document.querySelector('#usernameForm').style.display = 'block';
+            throw new Error('Validation error!');
+        } else {
+            document.querySelector('#usernameForm').style.display = 'none';
+        }
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    if (values.email) {
+
+        if (!emailRegex.test(values.email)) {
+            document.querySelector('#emailForm').style.display = 'block';
+            throw new Error('Validation error!');
+        } else {
+            document.querySelector('#emailForm').style.display = 'none';
+        }
+
+    }
+
+    if (values.password) {
+
+        if (values.password.length < 5 || values.password.length > 10) {
+            document.querySelector('#passwordForm').style.display = 'block';
+            throw new Error('Validation error!');
+        } else {
+            document.querySelector('#passwordForm').style.display = 'none';
+        }
+
+    }
+
+    if (values.confirmPassword) {
+
+        if (values.confirmPassword !== values.password) {
+            document.querySelector('#repeatPasswordForm').style.display = 'block';
+            throw new Error('Validation error!');
+        } else {
+            document.querySelector('#repeatPasswordForm').style.display = 'none';
+        }
+
+    }
+
 
     if (values.manufacturer) {
-        if (values.manufacturer.length < 3 || values.manufacturer?.length > 10) {
+        if (values.manufacturer.length < 3 || values.manufacturer.length > 10) {
             document.querySelector('#manufacturerForm').style.display = 'block';
             throw new Error('Validation error!');
         } else {
