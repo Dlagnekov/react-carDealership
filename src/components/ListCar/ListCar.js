@@ -27,6 +27,11 @@ export const ListCar = () => {
         ownerId: userId,
     }, onListCarSubmit);
 
+    const style = {
+        color: 'red',
+        display: 'none'
+    }
+
 
     return (
 
@@ -35,78 +40,76 @@ export const ListCar = () => {
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor='manufacturer'>Manufacturer</Form.Label>
                 <Form.Control type="text" placeholder="Enter manufacturer" name="manufacturer" value={values.manufacturer} onChange={changeHandler} />
-                <Form.Text className={styles.manufacturer}>
+                <p id='manufacturerForm' style={style}>
                     The manufacturer should be between 3 and 10 characters!
-                </Form.Text>
+                </p>
             </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label>Model</Form.Label>
                 <Form.Control type="text" placeholder="Enter model..." name="model" value={values.model} onChange={changeHandler} />
-                <Form.Text className={styles.model}>
+                <p id='modelForm' style={style}>
                     The model should be between 3 and 10 characters!
-                </Form.Text>
+                </p>
             </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label>Year</Form.Label>
                 <Form.Control type="text" placeholder="Enter year..." name="year" value={values.year} onChange={changeHandler} />
-                <Form.Text className={styles.year}>
+                <p id='yearForm' style={style}>
                     The year should be a number!
-                </Form.Text>
+                </p>
             </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label>Mileage</Form.Label>
                 <Form.Control type="text" placeholder="Enter mileage..." name="mileage" value={values.mileage} onChange={changeHandler} />
-                <Form.Text className={styles.mileage}>
+                <p id='mileageForm' style={style}>
                     The mileage should be a number!
-                </Form.Text>
+                </p>
             </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label>Engine</Form.Label>
                 <Form.Control type="text" placeholder="Enter engine..." name="engine" value={values.engine} onChange={changeHandler} />
-                <Form.Text className={styles.engineCode}>
+                <p id='engineForm' style={style}>
                     The engine should be at least 2 characters long!
-                </Form.Text>
+                </p>
             </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label>Price</Form.Label>
                 <Form.Control type="text" placeholder="Enter price..." name="price" value={values.price} onChange={changeHandler} />
-                <Form.Text className={styles.price}>
+                <p id='priceForm' style={style}>
                     The price should be a number!
-                </Form.Text>
+                </p>
             </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label>Image</Form.Label>
                 <Form.Control type="imageUrl" placeholder="Enter image..." name="imageUrl" value={values.imageUrl} onChange={changeHandler} />
-                <Form.Text className={styles.imageUrlCode}>
+                <p id='imageUrlForm' style={style}>
                     Enter a valid image URL format!
-                </Form.Text>
+                </p>
             </Form.Group>
 
             <Form.Group className="mb-3" >
                 <Form.Label>Description</Form.Label>
                 <Form.Control type="text" placeholder="Enter description..." name="description" value={values.description} onChange={changeHandler} />
-                <Form.Text className={styles.description}>
+                <p id='descriptionForm' style={style}>
                     The description should be at least 5 characters long!
-                </Form.Text>
+                </p>
             </Form.Group>
             <div className={styles.footer}>
 
-                <Form.Text className={styles.error}>
+                <p id='errorForm' style={style}>
                     All fields are required!
-                </Form.Text>
+                </p>
 
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-
             </div>
-
         </Form>
     );
 };

@@ -17,19 +17,19 @@
   border-radius: 8px;
 }
 
-.manufacturer,
-.model,
-.year,
-.mileage,
-.price,
-.imageUrlCode,
-.engineCode,
-.description {
+#manufacturer,
+#model,
+#year,
+#mileage,
+#price,
+#imageUrl,
+#engine,
+#description {
   color: red;
   display: none;
 }
 
-.error {
+#errorForm{
   color: red;
   font-family: Georgia, Times, 'Times New Roman', serif;
   font-weight: bold;

@@ -10,6 +10,7 @@ export const AuthProvider = ({
 }) => {
 
     const [user, setUser] = useState(undefined);
+    const [validation, setValidation] = useState(true);
 
     const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ export const AuthProvider = ({
             localStorage.setItem('user', JSON.stringify(result));
             navigate('/catalog');
         } catch (error) {
+            setValidation(false);
             console.log('There is a problem');
         }
     };
@@ -39,6 +41,7 @@ export const AuthProvider = ({
             setUser(result);
             navigate('/catalog');
         } catch (error) {
+            setValidation(false);
             console.log('There is a problem');
         }
     };
@@ -55,12 +58,14 @@ export const AuthProvider = ({
             const userData = JSON.parse(userAsString);
             setUser(userData)
         }
+        setValidation(true);
     }, []);
 
     const contextValues = {
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
+        validation,
         userId: user?._id,
         user: user,
         userEmail: user?.email,

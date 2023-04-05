@@ -6,17 +6,19 @@ import styles from './styles/Login.module.css'
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
-
 export const Login = () => {
 
-
-    const { onLoginSubmit } = useAuthContext();
+    const { onLoginSubmit, validation } = useAuthContext();
 
     const { values, changeHandler, onSubmit } = useForm({
         email: '',
         password: '',
     }, onLoginSubmit);
 
+    const style = {
+        color: 'red',
+        display: 'none'
+    }   
 
     return (
 
@@ -43,20 +45,21 @@ export const Login = () => {
                         onChange={changeHandler}
                     />
                 </Form.Group>
-            <Button variant="primary" onClick={onSubmit}>
-                Login
-            </Button>
+
+                {!validation && (
+                    <p style={{ color: "#0d6efd" }}>Wrong email or password!</p>
+                )}
+
+                <p id='errorForm' style={style}>
+                    All fields are required!
+                </p>
+
+                <Button variant="primary" onClick={onSubmit}>
+                    Login
+                </Button>
             </Form>
-            
+
         </div>
-
-
-
-
-        //     </Modal.Body>
-        //     <Modal.Footer>
-        //     </Modal.Footer>
-        // </Modal>
 
     );
 };
