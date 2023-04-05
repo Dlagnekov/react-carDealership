@@ -18,7 +18,7 @@ export const Login = () => {
     const style = {
         color: 'red',
         display: 'none'
-    }   
+    }
 
     return (
 
@@ -34,6 +34,9 @@ export const Login = () => {
                         value={values.email}
                         onChange={changeHandler}
                     />
+                    <p id='emailForm' style={style}>
+                        The email should be in an email format!
+                    </p>
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Password</Form.Label>
@@ -44,6 +47,9 @@ export const Login = () => {
                         value={values.password}
                         onChange={changeHandler}
                     />
+                    <p id='passwordForm' style={style}>
+                        The password should be between 5 and 10 characters!
+                    </p>
                 </Form.Group>
 
                 {!validation && (
