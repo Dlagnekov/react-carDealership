@@ -1,0 +1,64 @@
+.background-container {
+  margin: 60px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.card {
+  width: 350px;
+  margin: 10px;
+  max-height: auto;
+  text-align: center;
+}
+
+.title {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 0;
+  padding-top: 4px;
+}
+
+.profileInfo__list {
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.links {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+.links:hover {
+  color: white;
+}
+
+.back__btn {
+  background-color: #265326;
+  border: none;
+}
+
+.back__btn:hover {
+  background-color: #265326;
+  text-decoration: underline;
+}
+
+.book__btn {
+  background-color: goldenrod;
+  border: none;
+}
+
+.book__btn:hover {
+  background-color: goldenrod;
+  text-decoration: underline;
+}

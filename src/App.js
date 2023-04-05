@@ -8,6 +8,7 @@ import { CarProvider } from './contexts/CarContext';
 import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
+import { Profile } from './components/Profile/Profile';
 import { Logout } from './components/Logout/Logout';
 import { ListCar } from './components/ListCar/ListCar';
 import { Catalog } from './components/Catalog/Catalog';
@@ -44,6 +45,7 @@ function App() {
               <Route element={<RouteGuard />}>
 
                 <Route path='/logout' element={<Logout />} />
+                <Route path='/profile/:userId' element={<Profile />} />
                 <Route path='/list-car' element={<ListCar />} />
                 <Route path='/catalog/:carId/edit' element={<EditCar />} />
                 <Route path='/catalog/:carId/delete' element={<DeleteCar />} />
