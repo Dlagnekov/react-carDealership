@@ -10,25 +10,41 @@ import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 import { carServiceFactory } from '../../services/carService';
+import { driveServiceFactory } from '../../services/driveService';
 
 export const CarDetails = () => {
 
-    const { user } = useAuthContext();
+    const { user, userId } = useAuthContext();
 
     const { carId } = useParams();
 
     const carService = carServiceFactory();
+    const driveService = driveServiceFactory(user?.accessToken);
 
     const [car, setCar] = useState({});
-
+    const [booked, setBooked] = useState(false);
 
     useEffect(() => {
         carService.getOne(carId)
             .then(result => {
                 setCar(result);
-            })
-            // eslint-disable-next-line
+            });
+        driveService.getAll(userId)
+            .then((result) => {
+                console.log(result);
+                result.map(x => x.carId === carId ? setBooked(true) : x);
+            });
+        // eslint-disable-next-line
     }, []);
+
+    const onBook = async (carId, carManufacturer, carModel, userId, userUsername, userEmail) => {
+        const booked = await driveService.book(carId, carManufacturer, carModel, userId, userUsername, userEmail);
+        const all = await driveService.getAll(userId)
+        console.log(booked);
+        console.log(all);
+    };
+
+    console.log(booked);
 
 
     return (
@@ -49,12 +65,17 @@ export const CarDetails = () => {
                         <ListGroup.Item className={styles["carInfo_list_price"]}>Price - {car.price} BGN</ListGroup.Item>
 
                     </ListGroup>
+
                     <Card.Text className={styles.description}>{car.description}</Card.Text>
+
                     <div className={styles.buttons}>
+
                         <Button className={styles.back__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Back to catalog</Link></Button>
-                        {user && car._ownerId !== user._id && (
-                            <Button className={styles.book__btn} variant="primary"><Link to={`/catalog/${car._id}/book`} className={styles.links}>Book test drive</Link></Button>
+
+                        {user && car._ownerId !== user._id && !booked && (
+                            <Button className={styles.book__btn} variant="primary" onClick={() => onBook(carId, car.manufacturer, car.model, userId, user.username, user.email)} ><Link to={`/catalog/`} className={styles.links} >Book test drive</Link></Button>
                         )}
+
                     </div>
 
                 </Card.Body>

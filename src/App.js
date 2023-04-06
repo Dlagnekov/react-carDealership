@@ -29,40 +29,40 @@ function App() {
     <AuthProvider>
       <CarProvider >
 
-        <div className="App" styles={{ minHeight: 2000 }}>
+          <div className="App" styles={{ minHeight: 2000 }}>
 
-          <Header />
+            <Header />
 
-          <main id="main-content">
-            <Routes>
+            <main id="main-content">
+              <Routes>
 
-              <Route path='/' element={<Catalog />} />
-              <Route path='/catalog' element={<Catalog />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/catalog/:carId/details' element={<CarDetails />} />
+                <Route path='/' element={<Catalog />} />
+                <Route path='/catalog' element={<Catalog />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/catalog/:carId/details' element={<CarDetails />} />
 
-              <Route element={<RouteGuard />}>
+                <Route element={<RouteGuard />}>
 
-                <Route path='/logout' element={<Logout />} />
-                <Route path='/profile/:userId' element={<Profile />} />
-                <Route path='/list-car' element={<ListCar />} />
-                <Route path='/catalog/:carId/edit' element={<EditCar />} />
-                <Route path='/catalog/:carId/delete' element={<DeleteCar />} />
+                  <Route path='/logout' element={<Logout />} />
+                  <Route path='/profile/:userId' element={<Profile />} />
+                  <Route path='/list-car' element={<ListCar />} />
+                  <Route path='/catalog/:carId/edit' element={<EditCar />} />
+                  <Route path='/catalog/:carId/delete' element={<DeleteCar />} />
 
-              </ Route>
+                </ Route>
 
-              <Route path='/about' element={<About />} />
-              <Route path='/contacts' element={<Contacts />} />
-              <Route path='/error' element={<Error />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/contacts' element={<Contacts />} />
+                <Route path='/error' element={<Error />} />
 
 
-            </Routes>
-          </main>
+              </Routes>
+            </main>
 
-          <Footer />
-        </div>
-
+            <Footer />
+          </div>
+          
       </CarProvider>
     </AuthProvider>
 
