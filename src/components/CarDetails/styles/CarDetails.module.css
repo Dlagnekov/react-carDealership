@@ -40,6 +40,15 @@
   .description {
     font-weight: bold;
   }
+
+  .alreadyBooked {
+    border-top: 2px solid black;
+    padding-top: 8px;
+    text-align: center;
+    color: goldenrod;
+    font-size: 18px;
+    font-weight: bold;
+  }
   
   .buttons{
       display: flex;

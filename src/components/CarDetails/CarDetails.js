@@ -35,7 +35,7 @@ export const CarDetails = () => {
                 result.map(x => x.carId === carId ? setBooked(true) : x);
             });
         // eslint-disable-next-line
-    }, []);
+    }, [userId]);
 
     const onBook = async (carId, carManufacturer, carModel, userId, userUsername, userEmail) => {
         const booked = await driveService.book(carId, carManufacturer, carModel, userId, userUsername, userEmail);
@@ -68,6 +68,10 @@ export const CarDetails = () => {
 
                     <Card.Text className={styles.description}>{car.description}</Card.Text>
 
+                    {booked && (
+                        <Card.Text className={styles.alreadyBooked}> You have already booked a test drive for this car! </Card.Text>
+                    )}
+
                     <div className={styles.buttons}>
 
                         <Button className={styles.back__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Back to catalog</Link></Button>
@@ -75,6 +79,7 @@ export const CarDetails = () => {
                         {user && car._ownerId !== user._id && !booked && (
                             <Button className={styles.book__btn} variant="primary" onClick={() => onBook(carId, car.manufacturer, car.model, userId, user.username, user.email)} ><Link to={`/catalog/`} className={styles.links} >Book test drive</Link></Button>
                         )}
+
 
                     </div>
 
