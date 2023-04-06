@@ -84,6 +84,25 @@
     background-color: goldenrod;
     text-decoration: underline;
   }
+
+  .popover{
+    margin-top: 20px;
+    margin: 15px auto;
+    text-align: center;
+  }
+
+  .popover__Head{
+    background-color: white;
+    padding-top: 0px;
+  }
+
+  .popover__Buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    border-top: 1px solid grey;
+  }
   
   
   
