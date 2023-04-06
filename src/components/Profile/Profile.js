@@ -6,39 +6,77 @@ import styles from './styles/Profile.module.css';
 import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
+import { driveServiceFactory } from '../../services/driveService';
+import { ProfileCarCard } from '../CarCard/ProfileCarCard/ProfileCarCard';
+import { useEffect, useState } from 'react';
 
 export const Profile = () => {
 
-    const { user } = useAuthContext();
+    const { userId } = useAuthContext();
+    const [cars, setCars] = useState([]);
+    const [showBooked, setShowBooked] = useState(false);
+
+    const driveService = driveServiceFactory();
+
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    useEffect(() => {
+        driveService.getAll(userId)
+            .then((result) => {
+                setCars(result);
+            });
+        // eslint-disable-next-line
+    }, [userId])
+
+    const onShowBooked = () => {
+        setShowBooked(!showBooked);
+    };
 
 
     return (
 
-        <div className={styles["background-container"]}>
+        <>
 
-            <Card className={styles.card}>
+            <div className={styles["background-container"]}>
 
-                <Card.Body className={styles.profile__body}>
+                <Card className={styles.card}>
 
-                    <Card.Title className={styles.title}> Welcome, <span style={{ textDecoration: "underline" }}>{user.username}</span></Card.Title>
+                    <Card.Body className={styles.profile__body}>
 
-                    <ListGroup variant="flush">
+                        <Card.Title className={styles.title}> Welcome, <span style={{ textDecoration: "underline" }}>{user.username}</span></Card.Title>
 
-                        <ListGroup.Item className={styles["profileInfo_list"]}>Email - {user.email}</ListGroup.Item>
+                        <ListGroup variant="flush">
 
-                    </ListGroup>
+                            <ListGroup.Item className={styles["profileInfo_list"]}>Email - {user.email}</ListGroup.Item>
 
-                    <div className={styles.buttons}>
-                        <Button className={styles.back__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Back to catalog</Link></Button>
-                        <Button className={styles.book__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Booked test drives</Link></Button>
+                        </ListGroup>
 
-                    </div>
+                        <div className={styles.buttons}>
 
-                </Card.Body>
-            </Card>
+                            {!showBooked && (
+                                <Button className={styles.book__btn} variant="primary" onClick={onShowBooked}><Link className={styles.links}>Show booked test drives</Link></Button>
+                            )}
+                            {showBooked && (
+                                <Button className={styles.book__btn} variant="primary" onClick={onShowBooked}><Link className={styles.links}>Hide booked test drives</Link></Button>
+                            )}
 
+                        </div>
 
-        </div>
+                    </Card.Body>
+                </Card>
+            </div>
+
+            {showBooked && (
+
+                <div className={styles["background-container"]}>
+
+                    {cars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+
+                </div>
+
+            )}
+
+        </>
 
 
     );

@@ -35,14 +35,13 @@ export const CarDetails = () => {
             });
         driveService.getAll(userId)
             .then((result) => {
-                console.log(result);
                 result.map(x => x.carId === carId ? setBooked(true) : x);
             });
         // eslint-disable-next-line
     }, [userId]);
 
-    const onBook = async (carId, carManufacturer, carModel, userId, userUsername, userEmail) => {
-        await driveService.book(carId, carManufacturer, carModel, userId, userUsername, userEmail);
+    const onBook = async (carId, manufacturer, model, imageUrl, userId, userUsername, userEmail) => {
+        await driveService.book(carId, manufacturer, model, imageUrl, userId, userUsername, userEmail);
         setBookConfirm(false);
     };
 
@@ -55,13 +54,10 @@ export const CarDetails = () => {
     }
 
     const onClickBook = () => {
-        onBook(carId, car.manufacturer, car.model, userId, user.username, user.email);
+        onBook(carId, car.manufacturer, car.model, car.imageUrl, userId, user.username, user.email);
         setBookConfirm(false);
         navigate('/catalog');
     };
-
-
-    console.log(booked);
 
 
     return (
@@ -95,6 +91,10 @@ export const CarDetails = () => {
 
                         {user && car._ownerId !== user._id && !booked && (
                             <Button className={styles.book__btn} variant="primary" onClick={onOpenPopover} ><Link className={styles.links} >Book test drive</Link></Button>
+                        )}
+
+                        {booked && (
+                            <Button className={styles.book__btn} variant="primary" ><Link to={`/profile/${user._id}`} className={styles.links} >Go to profile</Link></Button>
                         )}
 
                     </div>

@@ -30,7 +30,7 @@ export const AuthProvider = ({
             navigate('/catalog');
         } catch (error) {
             setValidation(false);
-            console.log('There is a problem');
+            console.log('Failed to register!');
         }
     };
 
@@ -42,7 +42,7 @@ export const AuthProvider = ({
             navigate('/catalog');
         } catch (error) {
             setValidation(false);
-            console.log('There is a problem');
+            console.log('Failed to login!');
         }
     };
 

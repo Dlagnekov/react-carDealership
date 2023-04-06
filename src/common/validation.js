@@ -1,7 +1,4 @@
 export default function validation(values) {
-
-    console.log(values);
-
     
     if (values.username) {
         if (values.username.length < 2 || values.username.length > 10) {

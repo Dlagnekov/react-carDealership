@@ -1,0 +1,50 @@
+.card {
+  width: 290px;
+  margin: 10px;
+  max-height: auto;
+}
+
+.car__img {
+  border-bottom: 1px solid grey;
+  height: 200px;
+}
+
+.card__heading {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.title {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 0;
+  padding-top: 4px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.links {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+.links:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.details__btn {
+  background-color: coral;
+  border: none;
+}
+
+.details__btn:hover {
+  background-color: #373f81;
+  text-decoration: underline;
+}
