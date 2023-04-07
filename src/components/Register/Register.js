@@ -11,7 +11,7 @@ import styles from './styles/Register.module.css'
 export const Register = () => {
 
     const { onRegisterSubmit } = useContext(AuthContext);
-    const { values, changeHandler, onSubmit } = useForm({
+    const { values, changeHandler, onSubmit, validationObject } = useForm({
         username: '',
         email: '',
         password: '',
@@ -20,7 +20,6 @@ export const Register = () => {
 
     const style = {
         color: 'red',
-        display: 'none'
     }
 
     return (
@@ -37,9 +36,13 @@ export const Register = () => {
                         value={values.username}
                         onChange={changeHandler}
                     />
-                    <p id='usernameForm' style={style}>
-                        The username should be between 2 and 10 characters!
-                    </p>
+
+                    {!validationObject.username && (
+                        <p id='usernameForm' style={style}>
+                            The username should be between 2 and 10 characters!
+                        </p>
+                    )}
+
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -51,9 +54,12 @@ export const Register = () => {
                         value={values.email}
                         onChange={changeHandler}
                     />
-                    <p id='emailForm' style={style}>
-                        The email should be in an email format!
-                    </p>
+
+                    {!validationObject.email && (
+                        <p id='emailForm' style={style}>
+                            The email should be in an email format!
+                        </p>
+                    )}
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -65,9 +71,13 @@ export const Register = () => {
                         value={values.password}
                         onChange={changeHandler}
                     />
-                    <p id='passwordForm' style={style}>
-                        The password should be between 5 and 10 characters!
-                    </p>
+
+                    {!validationObject.password && (
+                        <p id='passwordForm' style={style}>
+                            The password should be between 5 and 10 characters!
+                        </p>
+                    )}
+
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -79,14 +89,21 @@ export const Register = () => {
                         value={values.confirmPassword}
                         onChange={changeHandler}
                     />
-                    <p id='repeatPasswordForm' style={style}>
-                        Password doesn't match!
-                    </p>
+
+                    {!validationObject.confirmPassword && (
+                        <p id='repeatPasswordForm' style={style}>
+                            Password doesn't match!
+                        </p>
+                    )}
+
                 </Form.Group>
 
-                <p id='errorForm' style={style}>
-                    All fields are required!
-                </p>
+                {!validationObject.isPopulated && (
+                    <p id='errorForm' style={style}>
+                        All fields are required!
+                    </p>
+                )}
+
 
                 <Button variant="primary" onClick={onSubmit}>
                     Register

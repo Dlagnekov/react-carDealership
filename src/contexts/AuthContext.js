@@ -66,6 +66,7 @@ export const AuthProvider = ({
         onRegisterSubmit,
         onLogout,
         validation,
+        setValidation,
         userId: user?._id,
         user: user,
         userEmail: user?.email,

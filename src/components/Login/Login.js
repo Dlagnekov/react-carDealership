@@ -5,20 +5,26 @@ import styles from './styles/Login.module.css'
 
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
+import { useEffect } from 'react';
 
 export const Login = () => {
 
-    const { onLoginSubmit, validation } = useAuthContext();
+    const { onLoginSubmit, validation, setValidation } = useAuthContext();
 
-    const { values, changeHandler, onSubmit } = useForm({
+    const { values, changeHandler, onSubmit, validationObject } = useForm({
         email: '',
         password: '',
     }, onLoginSubmit);
 
     const style = {
         color: 'red',
-        display: 'none'
     }
+
+    useEffect(() => {
+        setValidation(true);
+        // eslint-disable-next-line
+    }, [])
+
 
     return (
 
@@ -34,9 +40,11 @@ export const Login = () => {
                         value={values.email}
                         onChange={changeHandler}
                     />
-                    <p id='emailForm' style={style}>
-                        The email should be in an email format!
-                    </p>
+                    {!validationObject.email && (
+                        <p id='emailForm' style={style}>
+                            The email should be in an email format!
+                        </p>
+                    )}
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Password</Form.Label>
@@ -47,18 +55,23 @@ export const Login = () => {
                         value={values.password}
                         onChange={changeHandler}
                     />
-                    <p id='passwordForm' style={style}>
-                        The password should be between 5 and 10 characters!
-                    </p>
+                    {!validationObject.password && (
+                        <p id='passwordForm' style={style}>
+                            The password should be more than 5 characters!
+                        </p>
+                    )}
                 </Form.Group>
 
                 {!validation && (
-                    <p style={{ color: "#0d6efd" }}>Wrong email or password!</p>
+                    <p style={{ color: "#0d6efd", ...style }}>Wrong email or password!</p>
                 )}
 
-                <p id='errorForm' style={style}>
-                    All fields are required!
-                </p>
+
+                {!validationObject.isPopulated && (
+                    <p id='errorForm' style={style}>
+                        All fields are required!
+                    </p>
+                )}
 
                 <Button variant="primary" onClick={onSubmit}>
                     Login
