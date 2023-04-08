@@ -29,20 +29,9 @@ export const useForm = (initialValues, onSubmitHandler) => {
 
         e.preventDefault();
 
-            const valuesTrimmed = { ...values };
-
-            for (let key in valuesTrimmed) {
-
-                if (key !== '_createdOn') {
-                    valuesTrimmed[key].trim();
-                    
-                }
-            }
-
-
-            if (validation(values, setValidationObject)) {
-                onSubmitHandler(values);
-            }
+        if (validation(values, setValidationObject)) {
+            onSubmitHandler(values);
+        }
 
     };
 

@@ -7,12 +7,13 @@ export const driveServiceFactory = (token) => {
     const request = requestFactory(token);
 
     const getAll = async (userId) => {
+        
         const searchQuery = encodeURIComponent(`userId="${userId}"`);
-
         const result = await request.get(`${baseUrl}?where=${searchQuery}`);
         const testDrives = Object.values(result);
 
         return testDrives;
+
     };
 
     const book = async (carId, manufacturer, model, imageUrl, userId, userUsername, userEmail) => {
