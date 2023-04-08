@@ -10,6 +10,7 @@ export const ProfileCarCard = ({
     model,
     imageUrl,
     carId,
+    _id,
 }) => {
 
     return (
@@ -20,7 +21,7 @@ export const ProfileCarCard = ({
             <Card.Body className={styles.car__body}>
                 <div className={styles.card__heading}>
                     <Card.Title className={styles.title}>{manufacturer} {model}</Card.Title>
-                    <Button variant="primary" className={styles.details__btn}> <Link to={`/catalog/${carId}/details`} className={styles.links}>Details</Link> </Button>
+                    <Button variant="primary" className={styles.details__btn}> <Link to={`/catalog/${carId || _id}/details`} className={styles.links}>Details</Link> </Button>
                 </div>
 
             </Card.Body>

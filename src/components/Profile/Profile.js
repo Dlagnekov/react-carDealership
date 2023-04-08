@@ -7,14 +7,19 @@ import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
 import { driveServiceFactory } from '../../services/driveService';
+import { ownerService } from '../../services/ownerService';
 import { ProfileCarCard } from '../CarCard/ProfileCarCard/ProfileCarCard';
 import { useEffect, useState } from 'react';
 
 export const Profile = () => {
 
     const { userId } = useAuthContext();
-    const [cars, setCars] = useState([]);
+    const [bookedCars, setBookedCars] = useState([]);
+    const [ownedCars, setOwnedCars] = useState([]);
     const [showBooked, setShowBooked] = useState(false);
+    const [showOwned, setShowOwned] = useState(false);
+
+    const getOwnedCars = ownerService();
 
     const driveService = driveServiceFactory();
 
@@ -23,17 +28,23 @@ export const Profile = () => {
     useEffect(() => {
         driveService.getAll(userId)
             .then((result) => {
-                setCars(result);
+                setBookedCars(result);
+            });
+
+        getOwnedCars(userId)
+            .then((result) => {
+                setOwnedCars(result);
             });
         // eslint-disable-next-line
-    }, [userId])
+    }, [userId]);
+
+    const onShowOwned = () => {
+        setShowOwned(!showOwned);
+    };
 
     const onShowBooked = () => {
         setShowBooked(!showBooked);
     };
-
-    console.log(cars);
-
 
     return (
 
@@ -55,11 +66,18 @@ export const Profile = () => {
 
                         <div className={styles.buttons}>
 
+                            {!showOwned && (
+                                <Button className={styles.created__btn} variant="primary" onClick={onShowOwned}><Link className={styles.links}>Show listed cars</Link></Button>
+                            )}
+                            {showOwned && (
+                                <Button className={styles.created__btn} variant="primary" onClick={onShowOwned}><Link className={styles.links}>Hide listed cars</Link></Button>
+                            )}
+
                             {!showBooked && (
-                                <Button className={styles.book__btn} variant="primary" onClick={onShowBooked}><Link className={styles.links}>Show booked test drives</Link></Button>
+                                <Button className={styles.book__btn} variant="primary" onClick={onShowBooked}><Link className={styles.links}>Show booked cars</Link></Button>
                             )}
                             {showBooked && (
-                                <Button className={styles.book__btn} variant="primary" onClick={onShowBooked}><Link className={styles.links}>Hide booked test drives</Link></Button>
+                                <Button className={styles.book__btn} variant="primary" onClick={onShowBooked}><Link className={styles.links}>Hide booked cars</Link></Button>
                             )}
 
                         </div>
@@ -68,21 +86,41 @@ export const Profile = () => {
                 </Card>
             </div>
 
-            {showBooked && cars && (
+            {showBooked && bookedCars && (
 
                 <div className={styles["background-container"]}>
 
-                    {cars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+                    {bookedCars.map(car => <ProfileCarCard key={car._id} {...car} />)}
 
                 </div>
 
             )}
 
-            {showBooked && cars.length === 0 && (
+            {showBooked && bookedCars.length === 0 && (
 
                 <div className={styles.noBookedCars}>
 
                     <p className={styles.text}>No booked cars for the moment!</p>
+
+                </div>
+
+            )}
+
+            {showOwned && ownedCars && (
+
+                <div className={styles["background-container"]}>
+
+                    {ownedCars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+
+                </div>
+
+            )}
+
+            {showOwned && ownedCars.length === 0 && (
+
+                <div className={styles.noBookedCars}>
+
+                    <p className={styles.text}>You haven't listed any cars yet!</p>
 
                 </div>
 

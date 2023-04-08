@@ -59,7 +59,6 @@ export const CarDetails = () => {
         navigate('/catalog');
     };
 
-
     return (
 
         <div className={styles["background-container"]}>
@@ -94,6 +93,10 @@ export const CarDetails = () => {
                         )}
 
                         {booked && (
+                            <Button className={styles.book__btn} variant="primary" ><Link to={`/profile/${user._id}`} className={styles.links} >Go to profile</Link></Button>
+                        )}
+
+                        {user && car._ownerId === user._id && (
                             <Button className={styles.book__btn} variant="primary" ><Link to={`/profile/${user._id}`} className={styles.links} >Go to profile</Link></Button>
                         )}
 

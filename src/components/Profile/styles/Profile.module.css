@@ -31,7 +31,8 @@
 
 .buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 10px;
   padding-top: 20px;
 }
 
@@ -45,12 +46,12 @@
   color: white;
 }
 
-.back__btn {
+.created__btn {
   background-color: #265326;
   border: none;
 }
 
-.back__btn:hover {
+.created__btn:hover {
   background-color: #265326;
   text-decoration: underline;
 }
