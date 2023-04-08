@@ -19,22 +19,30 @@ export const useForm = (initialValues, onSubmitHandler) => {
         isPopulated: true,
     })
 
+    // console.log(values);
+
     const changeHandler = (e) => {
         setValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
     const onSubmit = (e) => {
 
-        const valuesTrimmed = { ...values };
-        for (let key in valuesTrimmed) {
-            valuesTrimmed[key].trim();
-        }
-
         e.preventDefault();
 
-        if (validation(valuesTrimmed, setValidationObject)) {
-            onSubmitHandler(valuesTrimmed);
-        }
+            const valuesTrimmed = { ...values };
+
+            for (let key in valuesTrimmed) {
+
+                if (key !== '_createdOn') {
+                    valuesTrimmed[key].trim();
+                    
+                }
+            }
+
+
+            if (validation(values, setValidationObject)) {
+                onSubmitHandler(values);
+            }
 
     };
 
