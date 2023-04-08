@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Niconne&display=swap");
+
+.about {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 50px 100px;
+  padding: 100px;
+  text-align: center;
+}
+
+.text {
+  color: #5383d3;
+  font-family: "Niconne";
+  font-weight: bolder;
+  font-size: 48px;
+}
