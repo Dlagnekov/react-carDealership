@@ -23,6 +23,7 @@ export const CarDetails = () => {
     const driveService = driveServiceFactory(user?.accessToken);
 
     const [car, setCar] = useState({});
+    const [noCar, setNoCar] = useState(false);
     const [booked, setBooked] = useState(false);
     const [bookConfirm, setBookConfirm] = useState(false);
 
@@ -32,6 +33,9 @@ export const CarDetails = () => {
         carService.getOne(carId)
             .then(result => {
                 setCar(result);
+            })
+            .catch((err) => {
+                setNoCar(true);
             });
         driveService.getAll(userId)
             .then((result) => {
@@ -63,63 +67,71 @@ export const CarDetails = () => {
 
         <div className={styles["background-container"]}>
 
-            <Card className={styles.card}>
-                <Card.Img className={styles.car__img} variant="top" src={car.imageUrl} />
-                <Card.Body className={styles.car__body}>
+            {!noCar && (
 
-                    <Card.Title className={styles.title}>{car.manufacturer} {car.model}</Card.Title>
+                <Card className={styles.card}>
+                    <Card.Img className={styles.car__img} variant="top" src={car.imageUrl} />
+                    <Card.Body className={styles.car__body}>
 
-                    <ListGroup variant="flush">
+                        <Card.Title className={styles.title}>{car.manufacturer} {car.model}</Card.Title>
 
-                        <ListGroup.Item className={styles["carInfo_list"]}>Year - {car.year}</ListGroup.Item>
-                        <ListGroup.Item className={styles["carInfo_list"]}>Mileage - {car.mileage}</ListGroup.Item>
-                        <ListGroup.Item className={styles["carInfo_list"]}>Engine - {car.engine}</ListGroup.Item>
-                        <ListGroup.Item className={styles["carInfo_list_price"]}>Price - {car.price} BGN</ListGroup.Item>
+                        <ListGroup variant="flush">
 
-                    </ListGroup>
+                            <ListGroup.Item className={styles["carInfo_list"]}>Year - {car.year}</ListGroup.Item>
+                            <ListGroup.Item className={styles["carInfo_list"]}>Mileage - {car.mileage}</ListGroup.Item>
+                            <ListGroup.Item className={styles["carInfo_list"]}>Engine - {car.engine}</ListGroup.Item>
+                            <ListGroup.Item className={styles["carInfo_list_price"]}>Price - {car.price} BGN</ListGroup.Item>
 
-                    <Card.Text className={styles.description}>{car.description}</Card.Text>
+                        </ListGroup>
 
-                    {booked && (
-                        <Card.Text className={styles.alreadyBooked}> You have already booked a test drive for this car! </Card.Text>
-                    )}
-
-                    <div className={styles.buttons}>
-
-                        <Button className={styles.back__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Back to catalog</Link></Button>
-
-                        {user && car._ownerId !== user._id && !booked && (
-                            <Button className={styles.book__btn} variant="primary" onClick={onOpenPopover} ><Link className={styles.links} >Book test drive</Link></Button>
-                        )}
+                        <Card.Text className={styles.description}>{car.description}</Card.Text>
 
                         {booked && (
-                            <Button className={styles.book__btn} variant="primary" ><Link to={`/profile/${user._id}`} className={styles.links} >Go to profile</Link></Button>
+                            <Card.Text className={styles.alreadyBooked}> You have already booked a test drive for this car! </Card.Text>
                         )}
 
-                        {user && car._ownerId === user._id && (
-                            <Button className={styles.book__btn} variant="primary" ><Link to={`/profile/${user._id}`} className={styles.links} >Go to profile</Link></Button>
+                        <div className={styles.buttons}>
+
+                            <Button className={styles.back__btn} variant="primary"><Link to={`/catalog`} className={styles.links}>Back to catalog</Link></Button>
+
+                            {user && car._ownerId !== user._id && !booked && (
+                                <Button className={styles.book__btn} variant="primary" onClick={onOpenPopover} ><Link className={styles.links} >Book test drive</Link></Button>
+                            )}
+
+                            {booked && (
+                                <Button className={styles.book__btn} variant="primary" ><Link to={`/profile`} className={styles.links} >Go to profile</Link></Button>
+                            )}
+
+                            {user && car._ownerId === user._id && (
+                                <Button className={styles.book__btn} variant="primary" ><Link to={`/profile`} className={styles.links} >Go to profile</Link></Button>
+                            )}
+
+                        </div>
+
+                        {bookConfirm && (
+                            <>
+                                <Popover id="popover-basic" className={styles.popover}>
+                                    <Popover.Header as="h3" className={styles.popover__Head}>Confirm booking</Popover.Header>
+                                    <Popover.Body>
+                                        <p>Do you want to book a test drive?</p>
+                                        <p>We will contact you via email for further details!</p>
+                                    </Popover.Body>
+                                    <div className={styles.popover__Buttons}>
+                                        <Button className={styles.back__btn} onClick={onClosePopover}>Close</Button>
+                                        <Button className={styles.book__btn} onClick={onClickBook}>Book</Button>
+                                    </div>
+                                </Popover>
+                            </>
                         )}
 
-                    </div>
+                    </Card.Body>
+                </Card>
 
-                    {bookConfirm && (
-                        <>
-                            <Popover id="popover-basic" className={styles.popover}>
-                                <Popover.Header as="h3" className={styles.popover__Head}>Confirm booking</Popover.Header>
-                                <Popover.Body>
-                                    <p>Do you want to book a test drive?</p>
-                                    <p>We will contact you via email for further details!</p>
-                                </Popover.Body>
-                                <div className={styles.popover__Buttons}>
-                                    <Button className={styles.back__btn} onClick={onClosePopover}>Close</Button>
-                                    <Button className={styles.book__btn} onClick={onClickBook}>Book</Button>
-                                </div>
-                            </Popover>
-                        </>
-                    )}
+            )}
 
-                </Card.Body>
-            </Card>
+            {noCar && (
+                <p className={styles.text}>This car is not available!</p>
+            )}
 
 
         </div>

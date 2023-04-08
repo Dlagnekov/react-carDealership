@@ -40,7 +40,7 @@ export const Header = () => {
               <Nav.Link as={Link} to="/logout" className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-4">Logout</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link as={Link} to={`/profile/${user._id}`} className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-5">Profile</Nav.Link>
+              <Nav.Link as={Link} to={`/profile`} className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-5">Profile</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link as={Link} to="/list-car" className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-7">List a car</Nav.Link>

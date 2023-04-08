@@ -9,101 +9,107 @@
 }
 
 .card {
-    width: 350px;
-    margin: 10px;
-    max-height: auto;
-  }
-  
-  .car__img{
-    border-bottom: 1px solid grey;
-    height: 200px;
-  }
-  
-  .title {
-    font-style: italic;
-    font-weight: 600;
-    font-size: 24px;
-    margin-bottom: 0;
-    padding-top: 4px;
-  }
-  
-  .carInfo__list {
-    font-weight: bold;
-  }
-  
-  .carInfo_list_price {
-    font-weight: 600;
-    font-size: 24px;
-    padding-left: 0px;
-  }
-  
-  .description {
-    font-weight: bold;
-  }
+  width: 350px;
+  margin: 10px;
+  max-height: auto;
+}
 
-  .alreadyBooked {
-    border-top: 2px solid black;
-    padding-top: 8px;
-    text-align: center;
-    color: goldenrod;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .buttons{
-      display: flex;
-      justify-content: space-around;
-  }
-  
-  .links{
-    text-decoration: none;
-    font-weight: bold;
-    color: white;   
-  }
+.car__img {
+  border-bottom: 1px solid grey;
+  height: 200px;
+}
 
-  .links:hover{
-    color: white;
-  }
-  
-  .back__btn{
-    background-color: #265326;
-    border: none;
-  }
+.title {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 0;
+  padding-top: 4px;
+}
 
-  .back__btn:hover{
-    background-color: #265326;
-    text-decoration: underline;
-  }
+.carInfo__list {
+  font-weight: bold;
+}
 
-  .book__btn{
-    background-color: goldenrod;
-    border: none;
-  }
+.carInfo_list_price {
+  font-weight: 600;
+  font-size: 24px;
+  padding-left: 0px;
+}
 
-  .book__btn:hover{
-    background-color: goldenrod;
-    text-decoration: underline;
-  }
+.description {
+  font-weight: bold;
+}
 
-  .popover{
-    margin-top: 20px;
-    margin: 15px auto;
-    text-align: center;
-  }
+.alreadyBooked {
+  border-top: 2px solid black;
+  padding-top: 8px;
+  text-align: center;
+  color: goldenrod;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-  .popover__Head{
-    background-color: white;
-    padding-top: 0px;
-  }
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
 
-  .popover__Buttons{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 15px;
-    padding-top: 15px;
-    border-top: 1px solid grey;
-  }
-  
-  
-  
-  
+.links {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+
+.links:hover {
+  color: white;
+}
+
+.back__btn {
+  background-color: #265326;
+  border: none;
+}
+
+.back__btn:hover {
+  background-color: #265326;
+  text-decoration: underline;
+}
+
+.book__btn {
+  background-color: goldenrod;
+  border: none;
+}
+
+.book__btn:hover {
+  background-color: goldenrod;
+  text-decoration: underline;
+}
+
+.popover {
+  margin-top: 20px;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.popover__Head {
+  background-color: white;
+  padding-top: 0px;
+}
+
+.popover__Buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  border-top: 1px solid grey;
+}
+
+.text {
+  color: #13397a;
+  font-family: "Niconne";
+  font-weight: bolder;
+  font-size: 48px;
+  margin: 0px;
+  text-align: center;
+  padding: 10px;
+}

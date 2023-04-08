@@ -45,7 +45,7 @@ function App() {
               <Route element={<RouteGuard />}>
 
                 <Route path='/logout' element={<Logout />} />
-                <Route path='/profile/:userId' element={<Profile />} />
+                <Route path='/profile' element={<Profile />} />
                 <Route path='/list-car' element={<ListCar />} />
                 <Route path='/catalog/:carId/edit' element={<EditCar />} />
                 <Route path='/catalog/:carId/delete' element={<DeleteCar />} />
