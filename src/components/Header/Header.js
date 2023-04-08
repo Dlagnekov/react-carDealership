@@ -50,9 +50,7 @@ export const Header = () => {
         <Nav.Item>
           <Nav.Link as={Link} to="/about" className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-8">About us</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link as={Link} to="/contacts" className={styles["nav-link"]} onClick={setActiveNav} eventKey="link-9">Contacts</Nav.Link>
-        </Nav.Item>
+
       </Nav>
     </header>
   );

@@ -16,7 +16,6 @@ import { CarDetails } from './components/CarDetails/CarDetails';
 import { EditCar } from './components/EditCar/EditCar';
 import { DeleteCar } from './components/DeleteCar/DeleteCar';
 import { About } from './components/About/About';
-import { Contacts } from './components/Contacts/Contacts';
 import { Error } from './components/Error/Error';
 import { Footer } from './components/Footer/Footer';
 
@@ -53,7 +52,6 @@ function App() {
                 </ Route>
 
                 <Route path='/about' element={<About />} />
-                <Route path='/contacts' element={<Contacts />} />
                 <Route path='/error' element={<Error />} />
 
 

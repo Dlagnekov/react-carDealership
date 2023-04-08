@@ -1,13 +1,15 @@
-import Card from 'react-bootstrap/Card';
+import styles from './styles/About.module.css'
 
 export const About = () => {
-    return (
-        <Card className="bg-dark text-white">
-          <Card.ImgOverlay>
-            <Card.Title>Atanas Dlagnekov Car Dealership</Card.Title>
-            <Card.Text>Sofia, Bulgaria</Card.Text>
-            <Card.Text>Several years in the industry. A trusted partner for finding your new car!</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-      );
+  return (
+
+    <div className={styles.about}>
+
+      <p className={styles.text}>Atanas Dlagnekov Car Dealership</p>
+      <p className={styles.text}>Sofia, Bulgaria</p>
+      <p className={styles.text}>Several years in the industry. A trusted partner for finding your new car!</p>
+
+    </div>
+
+  );
 };

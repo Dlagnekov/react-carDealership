@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Niconne&display=swap");
 
-.container {
-  padding: 50px;
-  margin: 300px auto;
+.about {
   background-color: rgba(255, 255, 255, 0.8);
+  margin: 50px 100px;
+  padding: 100px;
 }
 
 .text {
