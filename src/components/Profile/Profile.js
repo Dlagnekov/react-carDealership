@@ -32,6 +32,8 @@ export const Profile = () => {
         setShowBooked(!showBooked);
     };
 
+    console.log(cars);
+
 
     return (
 
@@ -66,11 +68,21 @@ export const Profile = () => {
                 </Card>
             </div>
 
-            {showBooked && (
+            {showBooked && cars && (
 
                 <div className={styles["background-container"]}>
 
                     {cars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+
+                </div>
+
+            )}
+
+            {showBooked && cars.length === 0 && (
+
+                <div className={styles.noBookedCars}>
+
+                    <p className={styles.text}>No booked cars for the moment!</p>
 
                 </div>
 
