@@ -88,9 +88,15 @@ export const Profile = () => {
 
             {showBooked && bookedCars && (
 
-                <div className={styles["background-container"]}>
+                <div>
+                    <div className={styles.textContainer}>
+                        <p className={styles.text}>Booked cars</p>
+                    </div>
+                    <div className={styles["background-container"]}>
 
-                    {bookedCars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+                        {bookedCars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+
+                    </div>
 
                 </div>
 
@@ -107,10 +113,16 @@ export const Profile = () => {
             )}
 
             {showOwned && ownedCars && (
+                <div>
+                    <div className={styles.textContainer}>
+                        <p className={styles.text}>Listed cars</p>
+                    </div>
 
-                <div className={styles["background-container"]}>
+                    <div className={styles["background-container"]}>
 
-                    {ownedCars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+                        {ownedCars.map(car => <ProfileCarCard key={car._id} {...car} />)}
+
+                    </div>
 
                 </div>
 

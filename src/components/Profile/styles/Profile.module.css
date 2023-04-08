@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Niconne&display=swap");
 
 .background-container {
-  margin: 60px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -73,9 +73,20 @@
   text-align: center;
 }
 
+.textContainer {
+  max-width: fit-content;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin: 5px auto;
+  border-radius: 6px;
+}
+
 .text {
   color: #5383d3;
   font-family: "Niconne";
   font-weight: bolder;
   font-size: 48px;
+  margin: 0px;
+  text-align: center;
+  padding: 10px;
 }
